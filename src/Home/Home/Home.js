@@ -3,13 +3,14 @@ import Form from "../From/Form";
 import Table from "../Table/Table";
 
 const Home = () => {
+  // store in local storage
   const localStorageStudents =
     JSON.parse(localStorage.getItem("students")) || [];
   const [students, setStudents] = useState(localStorageStudents);
   const onSubmit = (data) => {
     const newStudent = {
       ...data,
-      id: Date.now(),
+      id: students.length + 1,
     };
     const updatedStudent = [...students, newStudent];
     localStorage.setItem("students", JSON.stringify(updatedStudent));
